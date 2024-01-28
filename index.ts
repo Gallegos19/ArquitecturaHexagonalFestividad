@@ -4,7 +4,7 @@ import indexRouter from './src/shared/infraestructure/index.route';
 import { db } from "./src/shared/aplication/mysqlConnection";
 
 const app = express();
-const PORT = "3002";
+const PORT =process.env.PORT || 3009;
 
 app.use(cors());
 app.use(express.json());

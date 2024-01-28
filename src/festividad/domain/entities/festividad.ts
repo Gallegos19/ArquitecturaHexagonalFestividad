@@ -1,6 +1,6 @@
 export interface Festividad {
     nombreFestividad: string;
-    descripcion: string;
     fechaInicio?: Date;
+    descripcion: string;
     fechaFin?: Date;
 }

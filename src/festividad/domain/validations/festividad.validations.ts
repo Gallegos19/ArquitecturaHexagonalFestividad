@@ -6,21 +6,22 @@ const FestividadSchema = z.object({
     invalid_type_error: "nombreFestividad must be a string",
     required_error: "nombreFestividad is required",
   }),
-  FechaInicio: z.date({
-    invalid_type_error: "FechaInicio must be a Date",
-    required_error: "FechaInicio is required",
-  }),
+  fechaInicio: z.coerce.date().nullable().default(null),
   descripcion: z.string({
     invalid_type_error: "description must be a string",
     required_error: "description is required",
   }),
-  FechaFin: z.date({
-    invalid_type_error: "FechaFin must be a Date",
-    required_error: "FechaFin is required",
-  }),
+  fechaFin: z.coerce.date().nullable().default(null),
 });
 
 export const validateFestividad = (festividad: Festividad) => {
+  if (festividad.fechaInicio) {
+    festividad.fechaInicio = new Date(festividad.fechaInicio);
+  }
+  if (festividad.fechaFin) {
+    festividad.fechaFin = new Date(festividad.fechaFin);
+  }
+
   return FestividadSchema.safeParse(festividad);
 };
 

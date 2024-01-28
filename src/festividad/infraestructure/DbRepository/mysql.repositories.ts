@@ -26,7 +26,7 @@ export class MySQLRepositoryFestividad implements FestividadRepository {
   }
   createFestividad(Festividad: Festividad): Promise<Festividad> {
     const { nombreFestividad,fechaInicio,descripcion,fechaFin} = Festividad;
-    const query = `insert into festividad (nombreFestividad, fechaInicio, descripcion, fechaFin) values (?,?.?,?)`;
+    const query = `insert into festividad (nombreFestividad, fechaInicio, descripcion, fechaFin) values (?,?,?,?)`;
     return db
       .execute(query, [nombreFestividad,fechaInicio,descripcion,fechaFin])
       .then(() => {

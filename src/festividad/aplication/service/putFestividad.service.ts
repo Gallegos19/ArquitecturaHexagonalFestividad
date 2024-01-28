@@ -9,7 +9,7 @@ export class PutFestividadService {
       const resultValidation = validatePartialFestividad(Festividad);
       if (!resultValidation.success)
         throw new Error(resultValidation.error.message);
-      const originalFestividad = this.FestividadRepository.getFestividadById(idFestividad);
+      const originalFestividad = await this.FestividadRepository.getFestividadById(idFestividad);
       if (!(Festividad.descripcion && Festividad.nombreFestividad && originalFestividad))
         throw new Error("Festividad no encontrada");
       return await this.FestividadRepository.updateFestividad(idFestividad, Festividad);
